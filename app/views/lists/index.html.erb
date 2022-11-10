@@ -1,0 +1,12 @@
+<div>Nav bar</div>
+<div>Banner</div>
+<br>
+<div class="row">
+  <% @lists.each do |list| %>
+    <div class="col">
+      <div class="card"><%= link_to list.name, list_path(list) %></div>
+    </div>
+  <% end %>
+</div>
+<br>
+<%= link_to "+ Create List", new_list_path, class: "btn btn-primary" %>
