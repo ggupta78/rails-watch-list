@@ -1,4 +1,4 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_url "essential_movies.jpeg" %>);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://raw.githubusercontent.com/ggupta78/rails-watch-list/master/app/assets/images/essential_movies.jpeg');">
   <div class="container">
     <h1>My Favourite Movies!</h1>
     <p>Organized in handy lists.</p>
@@ -12,7 +12,7 @@
   <div class="cards">
     <% @lists.each do |list| %>
       <%= link_to list_path(list) do %>
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.4)), url(<%= image_url "popular-movie-categories" %>)">
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.4)), url('https://raw.githubusercontent.com/ggupta78/rails-watch-list/master/app/assets/images/popular-movie-categories.png')">
           <%= list.name %>
         </div>
       <% end %>
