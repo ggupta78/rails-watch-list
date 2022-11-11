@@ -1,12 +1,21 @@
-<div>Nav bar</div>
-<div>Banner</div>
-<br>
-<div class="row">
-  <% @lists.each do |list| %>
-    <div class="col">
-      <div class="card"><%= link_to list.name, list_path(list) %></div>
-    </div>
-  <% end %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_url "essential_movies.jpeg" %>);">
+  <div class="container">
+    <h1>My Favourite Movies!</h1>
+    <p>Organized in handy lists.</p>
+    <%= link_to "New List", new_list_path, class: "btn btn-flat" %>
+  </div>
 </div>
-<br>
-<%= link_to "+ Create List", new_list_path, class: "btn btn-primary" %>
+<div class="container-fluid my-3">
+  <div class="sub-menu mb-3">
+    <%= link_to "New List", new_list_path, class: "btn btn-flat" %>
+  </div>
+  <div class="cards">
+    <% @lists.each do |list| %>
+      <%= link_to list_path(list) do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.4)), url(<%= image_url "popular-movie-categories" %>)">
+          <%= list.name %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

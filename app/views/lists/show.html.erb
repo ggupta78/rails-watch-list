@@ -1,17 +1,29 @@
-<h1><%= @list.name %> List</h1>
-
-<%= link_to "+ Add Bookmark", new_list_bookmark_path(@list), class: "btn btn-primary" %>
-<br><br>
-<div class="row">
-<% @list.bookmarks.each do |bookmark| %>
-  <div class="col">
-    <div class="card">
-      <div><%= bookmark.movie.title %></div>
-      <div><%= link_to "🗑", list_bookmark_path(@list, bookmark), data: {turbo_method: :delete,
-          turbo_confirm: "Are you sure?"} %></div>
-    </div>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.6)), url(<%= image_url "movie-genres.jpeg" %>);">
+  <div class="movie-count btn btn-info">
+    <%= @list.bookmarks.count.to_s + " movie(s)" %>
   </div>
-<% end %>
+  <div class="container">
+    <h1><%= @list.name %> List</h1>
+  </div>
 </div>
-<br>
-<%= link_to "Back to all lists", lists_path %>
+
+<div class="container-fluid my-3">
+  <div class="sub-menu mb-3">
+    <%= link_to "Add Bookmark", new_list_bookmark_path(@list), class: "btn btn-primary" %>
+  </div>
+  <div class="cards">
+    <% @list.bookmarks.each do |bookmark| %>
+        <div class="card-movie">
+            <img src="<%= Movie::MOVIE_POSTER_BASE_URL + bookmark.movie.poster_url %>" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.4))" />
+            <div class="card-movie-infos">
+              <div>
+                <h2><%= bookmark.movie.title %>&nbsp;-&nbsp;<%= bookmark.movie.rating %><span class="rating-star"><i class="fa-solid fa-star"></i></span></h2>
+                <p><%= bookmark.comment %></p>
+              </div>
+              <h2 class="card-movie-pricing"><%= link_to "🗑", list_bookmark_path(@list, bookmark),
+                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></h2>
+            </div>
+          </div>
+    <% end %>
+  </div>
+</div>
